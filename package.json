@@ -10,6 +10,7 @@
     "frontend/*"
   ],
   "scripts": {
+    "start": "npm run dev",
     "build": "npm run build --workspaces",
     "bootstrap:admin": "npm run bootstrap:admin -w @scheduler/api-gateway",
     "db:deploy": "npm run db:deploy -w @scheduler/database",
