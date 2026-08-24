@@ -1,0 +1,37 @@
+{
+  "name": "distributed-job-scheduling-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Distributed HTTP job scheduling platform built with Node.js, Express, TypeScript, Postgres, RabbitMQ, Redis, Prisma, React, and Docker.",
+  "packageManager": "npm@10.0.0",
+  "workspaces": [
+    "backend/*",
+    "backend/packages/*",
+    "frontend/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "bootstrap:admin": "npm run bootstrap:admin -w @scheduler/api-gateway",
+    "db:deploy": "npm run db:deploy -w @scheduler/database",
+    "db:generate": "npm run db:generate -w @scheduler/database",
+    "db:migrate": "npm run db:migrate -w @scheduler/database",
+    "dev": "concurrently \"npm run dev:api-gateway\" \"npm run dev:job-service\" \"npm run dev:execution-service\" \"npm run dev:scheduler-service\" \"npm run dev:worker-service\"",
+    "dev:api-gateway": "npm run dev -w @scheduler/api-gateway",
+    "dev:dashboard": "npm run dev -w @scheduler/dashboard",
+    "dev:execution-service": "npm run dev -w @scheduler/execution-service",
+    "dev:job-service": "npm run dev -w @scheduler/job-service",
+    "dev:scheduler-service": "npm run dev -w @scheduler/scheduler-service",
+    "dev:worker-service": "npm run dev -w @scheduler/worker-service",
+    "lint": "npm run lint --workspaces --if-present",
+    "smoke": "node scripts/smoke-test.mjs",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "concurrently": "^10.0.5",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  }
+}
