@@ -4,7 +4,7 @@ This document describes the database schema and entity relationships for the Dis
 
 ## Visual ER Diagram
 
-![Platform ER Diagram](./diagrams/er-diagram.png)
+![Platform ER Diagram](./er-diagram.png)
 
 ---
 
