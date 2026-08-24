@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?logo=open-source-initiative&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue.svg?logo=docker&logoColor=white)
-![CI](https://github.com/ErenKarakus1/Distributed-Job-Scheduling-Platform/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Ramprasadlondhe2005/Distributed-Job-Scheduling-Platform/actions/workflows/ci.yml/badge.svg)
 ![Tests](https://img.shields.io/badge/Tests-83%20passing-brightgreen.svg?logo=node.js&logoColor=white)
 
 ![Node.js](https://img.shields.io/badge/Node.js-22-green.svg?logo=node.js&logoColor=white)
@@ -279,7 +279,7 @@ docker-compose.yml       Full local platform stack
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ErenKarakus1/Distributed-Job-Scheduling-Platform.git
+git clone https://github.com/Ramprasadlondhe2005/Distributed-Job-Scheduling-Platform.git
 cd Distributed-Job-Scheduling-Platform
 ```
 
