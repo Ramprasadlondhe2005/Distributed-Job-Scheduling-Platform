@@ -10,7 +10,7 @@
     "frontend/*"
   ],
   "scripts": {
-    "start": "npm run dev",
+    "start": "concurrently \"node backend/api-gateway/dist/index.js\" \"node backend/job-service/dist/index.js\" \"node backend/execution-service/dist/index.js\" \"node backend/scheduler-service/dist/index.js\" \"node backend/worker-service/dist/index.js\"",
     "build": "npm run build --workspaces",
     "bootstrap:admin": "npm run bootstrap:admin -w @scheduler/api-gateway",
     "db:deploy": "npm run db:deploy -w @scheduler/database",
