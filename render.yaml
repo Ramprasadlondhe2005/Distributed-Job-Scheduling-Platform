@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: distributed-job-scheduling-platform
+    runtime: node
+    buildCommand: npm install && npm run db:generate && npm run build
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: scheduler-postgres
+          property: connectionString
+
+databases:
+  - name: scheduler-postgres
+    plan: free
