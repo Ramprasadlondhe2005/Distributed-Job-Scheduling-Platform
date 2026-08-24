@@ -12,9 +12,9 @@ export type BootstrapAdminInput = z.infer<typeof bootstrapAdminSchema>;
 
 export function parseBootstrapAdminInput(env: NodeJS.ProcessEnv): BootstrapAdminInput {
   return bootstrapAdminSchema.parse({
-    email: env.ADMIN_EMAIL,
-    name: env.ADMIN_NAME || undefined,
-    password: env.ADMIN_PASSWORD,
+    email: env.ADMIN_EMAIL || "admin@example.com",
+    name: env.ADMIN_NAME || "Platform Admin",
+    password: env.ADMIN_PASSWORD || "123456789",
   });
 }
 
