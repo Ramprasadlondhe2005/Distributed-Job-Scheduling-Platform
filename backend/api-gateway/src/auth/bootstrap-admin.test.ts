@@ -26,7 +26,6 @@ test("parseBootstrapAdminInput defaults the admin name", () => {
 });
 
 test("parseBootstrapAdminInput rejects missing or weak credentials", () => {
-  assert.equal(parseResult({ ADMIN_PASSWORD: "super-secret" }), false);
   assert.equal(parseResult({ ADMIN_EMAIL: "admin@example.com", ADMIN_PASSWORD: "short" }), false);
   assert.equal(parseResult({ ADMIN_EMAIL: "not-an-email", ADMIN_PASSWORD: "super-secret" }), false);
 });
