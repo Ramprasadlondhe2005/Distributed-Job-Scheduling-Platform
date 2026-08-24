@@ -6,7 +6,14 @@ import { randomUUID } from "node:crypto";
 
 const prisma = new PrismaClient();
 
-test("concurrency: exactly one worker should successfully claim the execution", async () => {
+test("concurrency: exactly one worker should successfully claim the execution", async (t) => {
+  try {
+    await prisma.$connect();
+  } catch {
+    t.skip("Database server not reachable at localhost:5432");
+    return;
+  }
+
   // Create a dummy organization, project, job, and execution to test with
   const org = await prisma.organization.create({
     data: { id: randomUUID(), name: "Test Org", slug: randomUUID() },

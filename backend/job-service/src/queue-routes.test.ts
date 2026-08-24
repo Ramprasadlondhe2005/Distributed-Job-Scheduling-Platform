@@ -8,6 +8,16 @@ import { registerProjectRoutes } from "./project-routes.js";
 
 const prisma = new PrismaClient();
 
+async function checkDbAvailable(t: any): Promise<boolean> {
+  try {
+    await prisma.$connect();
+    return true;
+  } catch {
+    t.skip("Database server not reachable at localhost:5432");
+    return false;
+  }
+}
+
 const app = express();
 app.use(express.json());
 
@@ -22,7 +32,8 @@ app.use((req, res, next) => {
 registerProjectRoutes(app, { prisma });
 registerQueueRoutes(app, { prisma });
 
-test("Queue CRUD and scoping", async () => {
+test("Queue CRUD and scoping", async (t) => {
+  if (!(await checkDbAvailable(t))) return;
   await prisma.job.deleteMany({});
   await prisma.queue.deleteMany({});
   await prisma.project.deleteMany({});
@@ -91,7 +102,8 @@ test("Queue CRUD and scoping", async () => {
   assert.equal(resDeleteQueue.status, 200);
 });
 
-test("Batch job creation", async () => {
+test("Batch job creation", async (t) => {
+  if (!(await checkDbAvailable(t))) return;
   await prisma.job.deleteMany({});
   await prisma.queue.deleteMany({});
   await prisma.project.deleteMany({});

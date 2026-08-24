@@ -8,6 +8,16 @@ import { registerExecutionCommandRoutes } from "./command-routes.js";
 
 const prisma = new PrismaClient();
 
+async function checkDbAvailable(t: any): Promise<boolean> {
+  try {
+    await prisma.$connect();
+    return true;
+  } catch {
+    t.skip("Database server not reachable at localhost:5432");
+    return false;
+  }
+}
+
 async function createTestApp() {
   const app = express();
   app.use(express.json());
@@ -27,7 +37,8 @@ async function createTestApp() {
   return app;
 }
 
-test("Cross-tenant Data Access Scoping for executions", async () => {
+test("Cross-tenant Data Access Scoping for executions", async (t) => {
+  if (!(await checkDbAvailable(t))) return;
   await prisma.deadLetterMessage.deleteMany({});
   await prisma.executionAttempt.deleteMany({});
   await prisma.execution.deleteMany({});

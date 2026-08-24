@@ -9,6 +9,16 @@ import { registerJobCommandRoutes } from "./command-routes.js";
 
 const prisma = new PrismaClient();
 
+async function checkDbAvailable(t: any): Promise<boolean> {
+  try {
+    await prisma.$connect();
+    return true;
+  } catch {
+    t.skip("Database server not reachable at localhost:5432");
+    return false;
+  }
+}
+
 const app = express();
 app.use(express.json());
 
@@ -26,7 +36,8 @@ registerJobCommandRoutes(app, { prisma });
 import { registerQueueRoutes } from "./queue-routes.js";
 registerQueueRoutes(app, { prisma });
 
-test("Project CRUD and Cross-org scoping", async () => {
+test("Project CRUD and Cross-org scoping", async (t) => {
+  if (!(await checkDbAvailable(t))) return;
   await prisma.job.deleteMany({});
   await prisma.queue.deleteMany({});
   await prisma.project.deleteMany({});
