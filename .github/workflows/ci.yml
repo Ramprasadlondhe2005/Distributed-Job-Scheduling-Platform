@@ -30,12 +30,18 @@ jobs:
 
       - name: Generate Prisma client
         run: npm run db:generate
+        env:
+          DATABASE_URL: postgresql://scheduler:scheduler@localhost:5432/scheduler
 
       - name: Run unit tests
         run: npm test
+        env:
+          DATABASE_URL: postgresql://scheduler:scheduler@localhost:5432/scheduler
 
       - name: TypeScript check
         run: npm run typecheck
+        env:
+          DATABASE_URL: postgresql://scheduler:scheduler@localhost:5432/scheduler
 
       - name: Build dashboard
         run: npm run build -w @scheduler/dashboard
