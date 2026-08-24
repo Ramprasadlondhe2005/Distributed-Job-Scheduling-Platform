@@ -42,8 +42,9 @@ import type {
 } from "./types.js";
 
 function getApiBaseUrl(): string {
-  if (import.meta.env.VITE_API_BASE_URL) {
-    return import.meta.env.VITE_API_BASE_URL;
+  const envUrl = import.meta.env.VITE_API_BASE_URL;
+  if (envUrl && !envUrl.includes("distributed-job-scheduling-platform-3.onrender.com")) {
+    return envUrl;
   }
   if (
     typeof window !== "undefined" &&
