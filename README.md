@@ -19,9 +19,9 @@ Developers can create HTTP jobs, schedule future or recurring runs, inspect atte
 
 ## Demo Video
 
-[![Distributed Job Scheduling Platform demo video](https://img.youtube.com/vi/Ob4obQvwj_g/maxresdefault.jpg)](https://youtu.be/Ob4obQvwj_g)
+▶ **[Watch the Distributed Job Scheduling Platform Demo Video on Google Drive](https://drive.google.com/file/d/10jDnHRSWWEtqZtFiudlcsKk2_uBxhLM7/view?usp=sharing)**
 
-▶ **Click the image above to play the demo video**
+[![Distributed Job Scheduling Platform Demo Video](./docs/diagrams/er-diagram.png)](https://drive.google.com/file/d/10jDnHRSWWEtqZtFiudlcsKk2_uBxhLM7/view?usp=sharing)
 
 ## Table of Contents
 
